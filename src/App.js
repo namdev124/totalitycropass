@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+// App.js
+import React, { useState } from 'react';
 import './App.css';
+import PropertyListings from './components/PropertyListings';
+import BookingManagement from './components/BookingManagement';
+import CheckoutProcess from './components/CheckoutProcess';
 
 function App() {
+  const [properties, setProperties] = useState([
+    // Array of property objects
+    {
+      id: 1,
+      title: "Beautiful Villa",
+      location: "Beachfront",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      price: 200,
+      bedrooms: 3,
+      amenities: ["WiFi", "Pool"],
+      image: "villa-image-url.jpg"
+    },
+    // More property objects...
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Property Rental Platform</h1>
+      <PropertyListings properties={properties} setProperties={setProperties} />
+      <BookingManagement properties={properties} />
+      <CheckoutProcess />
     </div>
   );
 }
